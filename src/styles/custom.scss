@@ -7,3 +7,8 @@ $theme-colors: (
 );
 
 @import "~bootstrap/scss/bootstrap";
+
+//extend bootstrap form-control to inherit styling
+.PhoneInputInput {
+    @extend .form-control
+}
