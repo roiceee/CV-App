@@ -1,8 +1,9 @@
+
 $theme-colors: (
     "primary": #1D2F6F,
     "secondary": #8390FA,
-    "success": #F88DAD,
-    "info": #FAC748
+    "tertiary": #F88DAD,
+    "action": #FAC748,
 );
 
 @import "~bootstrap/scss/bootstrap";

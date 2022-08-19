@@ -1,11 +1,13 @@
+
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import NavigationBar from './navbar'
+import BodyContainer from './body/bodyContainer'
 
 function App() {
   return (
     <div className="App">
-      <p>Hello bruv</p>
-      <Button variant='primary'>Nah</Button>
+      <NavigationBar title='CV Generator'/>
+      <BodyContainer/> 
     </div>
   );
 }
