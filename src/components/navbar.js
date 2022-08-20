@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/esm/Container';
 import icon from '../assets/icon.png'
 import Navbar from 'react-bootstrap/Navbar';
 
-function NavigationBar(props) {
+function NavigationBar() {
     return (
       <Navbar bg="secondary" variant="secondary">
         <Container>
@@ -15,7 +15,7 @@ function NavigationBar(props) {
               height="30"
               className="d-inline-block align-top"
             />{' '}
-            {props.title}
+            CV Generator
           </Navbar.Brand>
         </Container>
       </Navbar>

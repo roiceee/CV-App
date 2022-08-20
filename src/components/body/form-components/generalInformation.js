@@ -53,9 +53,7 @@ function GeneralInformationForm({
       <Form.Group className="mb-3" controlId="formFirstName">
         <Form.Label>First Name</Form.Label>
         <Form.Control
-          onChange={(e) => {
-            changeInputHandler(e);
-          }}
+          onChange={changeInputHandler}
           value={firstName}
           type="text"
           placeholder="Text here"
@@ -66,9 +64,7 @@ function GeneralInformationForm({
       <Form.Group className="mb-3" controlId="formMiddleInitial">
         <Form.Label>Middle Initial (optional)</Form.Label>
         <Form.Control
-          onChange={(e) => {
-            changeInputHandler(e);
-          }}
+          onChange={changeInputHandler}
           value={middleInitial}
           type="text"
           placeholder="Text here"
@@ -79,9 +75,7 @@ function GeneralInformationForm({
       <Form.Group className="mb-3" controlId="formLastName">
         <Form.Label>Last Name</Form.Label>
         <Form.Control
-          onChange={(e) => {
-            changeInputHandler(e);
-          }}
+          onChange={changeInputHandler}
           value={lastName}
           type="text"
           placeholder="Text here"
@@ -92,9 +86,7 @@ function GeneralInformationForm({
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
-          onChange={(e) => {
-            changeInputHandler(e);
-          }}
+          onChange={changeInputHandler}
           value={email}
           type="email"
           placeholder="Enter email"

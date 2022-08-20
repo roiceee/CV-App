@@ -6,7 +6,7 @@ import BodyContainer from './body/bodyContainer'
 function App() {
   return (
     <div className="App">
-      <NavigationBar title='CV Generator'/>
+      <NavigationBar/>
       <BodyContainer/> 
     </div>
   );
