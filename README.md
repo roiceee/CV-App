@@ -1,3 +1,3 @@
-# CV-App
+# ID-Generator
 
-Simple app made with React.js that lets you create simple CVs downloadable in JPEG or PDF format.
+Simple app made with React.js that lets you create custom IDs downloadable in JPEG format.
