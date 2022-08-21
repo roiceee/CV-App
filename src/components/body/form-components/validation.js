@@ -1,50 +1,53 @@
 import { debounce } from "lodash";
 
-function validateFirstName(e) {
-  const firstNameErrorTextContainer = document.getElementById("first-name-error");
-  if (hasNoInput(e, firstNameErrorTextContainer)) {
+function validateRequiredInput(e, errorTextContainerID) {
+  const errorTextContainer = document.getElementById(errorTextContainerID);
+  if (hasNoInput(e, errorTextContainer)) {
     return;
   }
-  if (hasSpecialCharacters(e, firstNameErrorTextContainer)) {
+  if (hasSpecialCharacters(e, errorTextContainer)) {
     return;
   }
-  removeErrorWarning(e, firstNameErrorTextContainer);
+  removeErrorWarning(e, errorTextContainer);
 }
 
-function validateMiddleInitial(e) {
-  const middleInitialErrorTextContainer = document.getElementById(
-    "middle-initial-error"
+function validateInput(e, errorTextContainerID) {
+  const errorTextContainer = document.getElementById(
+    errorTextContainerID
   );
-  if (hasSpecialCharacters(e, middleInitialErrorTextContainer)) {
+  if (hasSpecialCharacters(e, errorTextContainer)) {
     return;
   }
-  removeErrorWarning(e, middleInitialErrorTextContainer);
+  removeErrorWarning(e, errorTextContainer);
 }
 
-function validateLastName(e) {
-  const lastNameErrorTextContainer = document.getElementById("last-name-error");
-  if (hasNoInput(e, lastNameErrorTextContainer)) {
-    return;
-  }
-  if (hasSpecialCharacters(e, lastNameErrorTextContainer)) {
-    return;
-  }
-  removeErrorWarning(e, lastNameErrorTextContainer);
-}
-
-function validateEmail(e) {
-  const emailErrorTextContainer = document.getElementById("email-error");
+function validateEmail(e, errorTextContainerID) {
+  const errorTextContainer = document.getElementById(errorTextContainerID);
   const pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   const value = e.target.value;
-  if (hasNoInput(e, emailErrorTextContainer)) {
+  if (hasNoInput(e, errorTextContainer)) {
     return;
   }
   if (!value.match(pattern)) {
     e.target.classList.add("invalid-form");
-    emailErrorTextContainer.textContent = "Must be a valid email address.";
+    errorTextContainer.textContent = "Must be a valid email address.";
     return;
   }
-  removeErrorWarning(e, emailErrorTextContainer);
+  removeErrorWarning(e, errorTextContainer);
+}
+
+function validateExactLength(e, requiredLength, errorTextContainerID) {
+  const errorTextContainer = document.getElementById(errorTextContainerID);
+  const value = e.target.value;
+  if (value === "") {
+    removeErrorWarning(e, errorTextContainer);
+    return;
+  }
+  if (value.length !== requiredLength) {
+    errorTextContainer.textContent = `Input should contain exactly ${requiredLength} characters.`
+    e.target.classList.add("invalid-form");
+    return true;
+  }
 }
 
 function hasSpecialCharacters(e, errorTextContainer) {
@@ -71,14 +74,14 @@ function removeErrorWarning(e, errorTextContainer) {
   errorTextContainer.textContent = "";
 }
 
-const debouncedValidateFirstName = debounce(validateFirstName, 1000);
-const debouncedValidateMiddleInitial = debounce(validateMiddleInitial, 1000);
-const debouncedValidateLastName = debounce(validateLastName, 1000);
+const debouncedValidateRequiredInput = debounce(validateRequiredInput, 1000);
+const debouncedValidateInput = debounce(validateInput, 1000);
 const debouncedValidateEmail = debounce(validateEmail, 1000);
+const debouncedValidateExactLength = debounce(validateExactLength, 1000);
 
 export {
-  debouncedValidateFirstName,
-  debouncedValidateMiddleInitial,
-  debouncedValidateLastName,
+  debouncedValidateRequiredInput,
+  debouncedValidateInput,
   debouncedValidateEmail,
+  debouncedValidateExactLength
 };

@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function NavigationBar() {
     return (
-      <Navbar bg="secondary" variant="secondary">
+      <Navbar bg="primary" variant="dark">
         <Container>
           <Navbar.Brand href="#home">
             <img
@@ -15,7 +15,7 @@ function NavigationBar() {
               height="30"
               className="d-inline-block align-top"
             />{' '}
-            CV Generator
+            ID Generator
           </Navbar.Brand>
         </Container>
       </Navbar>

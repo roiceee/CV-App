@@ -3,7 +3,7 @@ import React from 'react';
 function Header() {
 
     return(
-        <h4>Create simple CVs for your job applications.</h4>
+        <h4>Create your custom ID.</h4>
     )
 }
 

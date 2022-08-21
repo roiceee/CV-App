@@ -2,13 +2,12 @@ import Form from "react-bootstrap/Form";
 import React, { useCallback } from "react";
 import "react-phone-number-input/style.css";
 import {
-  debouncedValidateFirstName,
-  debouncedValidateMiddleInitial,
-  debouncedValidateLastName,
+  debouncedValidateRequiredInput,
+  debouncedValidateInput,
   debouncedValidateEmail,
 } from "./validation";
 import PhoneInput from "react-phone-number-input";
-import '../../../styles/form-customize.css'
+import "../../../styles/form-customize.css";
 
 function GeneralInformationForm({
   firstName,
@@ -28,19 +27,19 @@ function GeneralInformationForm({
     switch (targetID) {
       case "formFirstName":
         setFirstName(value);
-        debouncedValidateFirstName(e);
+        debouncedValidateRequiredInput(e, "first-name-error");
         break;
       case "formMiddleInitial":
         setMiddleInitial(value);
-        debouncedValidateMiddleInitial(e);
+        debouncedValidateInput(e, "middle-initial-error");
         break;
       case "formLastName":
         setLastName(value);
-        debouncedValidateLastName(e);
+        debouncedValidateRequiredInput(e, "last-name-error");
         break;
       case "formBasicEmail":
         setEmail(value);
-        debouncedValidateEmail(e);
+        debouncedValidateEmail(e, "email-error");
         break;
       case "formPhoneNumber":
         setPhoneNumber(value);
@@ -50,8 +49,9 @@ function GeneralInformationForm({
 
   return (
     <Form className="mt-4">
+      <h6>General Information</h6>
       <Form.Group className="mb-3" controlId="formFirstName">
-        <Form.Label>First Name</Form.Label>
+        <Form.Label>First Name (required)</Form.Label>
         <Form.Control
           onChange={changeInputHandler}
           value={firstName}
@@ -62,7 +62,7 @@ function GeneralInformationForm({
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formMiddleInitial">
-        <Form.Label>Middle Initial (optional)</Form.Label>
+        <Form.Label>Middle Initial</Form.Label>
         <Form.Control
           onChange={changeInputHandler}
           value={middleInitial}
@@ -73,7 +73,7 @@ function GeneralInformationForm({
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formLastName">
-        <Form.Label>Last Name</Form.Label>
+        <Form.Label>Last Name (required)</Form.Label>
         <Form.Control
           onChange={changeInputHandler}
           value={lastName}
@@ -84,7 +84,7 @@ function GeneralInformationForm({
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label>Email address (required)</Form.Label>
         <Form.Control
           onChange={changeInputHandler}
           value={email}
