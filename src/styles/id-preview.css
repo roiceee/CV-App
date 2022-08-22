@@ -1,0 +1,46 @@
+.preview {
+    display: block;
+    height: 500px;
+    padding: 24px 32px 24px 32px;
+    width: 340px!important;
+    font-size: 0.9rem;
+}
+
+#name-preview {
+    font-size: 1.05rem;
+    margin-top: 6px;
+    width: 190px;
+    height: 40px;
+    overflow-wrap: break-word;
+}
+
+#course-preview {
+    font-size: 0.9rem;
+    margin-top: 18px;
+    width: 190px;
+    height: 40px;
+    overflow-wrap: break-word;
+}
+
+#image-holder {
+    width: 220px;
+    height: 220px;
+}
+
+#inner-container {
+    margin-top: 32px;
+    padding: 8px;
+    width: 236px;
+    height: 340px;
+}
+
+#address-preview {
+    height: 36px;
+    width: 210px;
+    overflow-wrap: break-word;
+}
+
+#secondary-details {
+    font-size: 0.8rem;
+    margin-top: 12px;
+}

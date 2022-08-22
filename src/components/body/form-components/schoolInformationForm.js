@@ -49,11 +49,12 @@ function SchoolInformationForm({
           value={studentInfo.course}
           type="text"
           placeholder="Course (required)"
+          maxLength={40}
         />
         <div id="course-error" className="error"></div>
       </Form.Group>
       <Form.Group className="mb-2" controlId="yearLevel">
-        <Form.Select
+        {/* <Form.Select
           value={studentInfo.yearLevel}
           onChange={onChange}
           aria-label="Year Level"
@@ -63,7 +64,7 @@ function SchoolInformationForm({
           <option value="2nd Year">2nd Year</option>
           <option value="3rd Year">3rd Year</option>
           <option value="4th Year">4th Year</option>
-        </Form.Select>
+        </Form.Select> */}
         <div id="year-level-error" className="error"></div>
       </Form.Group>
     </Form>

@@ -4,16 +4,17 @@ import GeneralInformationForm from "./form-components/generalInformation";
 import Header from "./header";
 import { useState, useCallback } from "react";
 import SchoolInformationForm from "./form-components/schoolInformationForm";
+import IdContainer from "./id-components/idContainer";
+import defaultIcon from "../../assets/default-photo.jpg"
 
 function BodyContainer() {
   let defaultStudentInformation = {
     name: "",
     email: "",
-    city: "",
-    province: "",
+    address: "",
     schoolName: "Roice University",
     course: "",
-    yearLevel: "",
+    photo: defaultIcon
   };
   const [studentInfo, setStudentInfo] = useState(defaultStudentInformation);
 
@@ -26,7 +27,7 @@ function BodyContainer() {
   }, []);
 
   return (
-    <Container className="mt-2">
+    <Container>
       <Header />
       <GeneralInformationForm
         studentInfo={studentInfo}
@@ -36,6 +37,7 @@ function BodyContainer() {
         studentInfo={studentInfo}
         changeInputHandler={changeInputHandler}
       />
+      <IdContainer studentInfo={studentInfo}/>
     </Container>
   );
 }

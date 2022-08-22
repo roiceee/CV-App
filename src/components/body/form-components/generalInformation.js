@@ -21,9 +21,8 @@ function GeneralInformationForm({ studentInfo, changeInputHandler }) {
       case "email":
         debouncedValidateEmail(e, "email-error");
         break;
-      case "city":
-      case "province":
-        debouncedValidateInput(e, "city-error");
+      case "address":
+        debouncedValidateInput(e, "address-error");
         break;
     }
   }, []);
@@ -37,6 +36,7 @@ function GeneralInformationForm({ studentInfo, changeInputHandler }) {
           value={studentInfo.name}
           type="text"
           placeholder="Full Name (required)"
+          maxLength={30 }
         />
         <div id="name-error" className="error"></div>
       </Form.Group>
@@ -47,31 +47,22 @@ function GeneralInformationForm({ studentInfo, changeInputHandler }) {
           value={studentInfo.email}
           type="email"
           placeholder="Email (required)"
+          maxLength={35}
         />
         <div id="email-error" className="error"></div>
       </Form.Group>
 
       <Row>
         <Col>
-          <Form.Group className="mb-2" controlId="city">
+          <Form.Group className="mb-2" controlId="address">
             <Form.Control
               onChange={onChange}
-              value={studentInfo.city}
+              value={studentInfo.address}
               type="text"
-              placeholder="City/Municipality"
+              placeholder="Address"
+              maxLength={45}
             />
-            <div id="city-error" className="error"></div>
-          </Form.Group>
-        </Col>
-        <Col>
-          <Form.Group className="mb-2" controlId="province">
-            <Form.Control
-              onChange={onChange}
-              value={studentInfo.province}
-              type="text"
-              placeholder="State/Province"
-            />
-            <div id="province-error" className="error"></div>
+            <div id="address-error" className="error"></div>
           </Form.Group>
         </Col>
       </Row>

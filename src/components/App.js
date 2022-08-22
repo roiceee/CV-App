@@ -5,7 +5,7 @@ import BodyContainer from './body/bodyContainer'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App pb-3">
       <NavigationBar/>
       <BodyContainer/> 
     </div>
