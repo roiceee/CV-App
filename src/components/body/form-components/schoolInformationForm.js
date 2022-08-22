@@ -7,67 +7,55 @@ import {
 } from "./validation";
 
 function SchoolInformationForm({
-  course,
-  setCourse,
-  yearLevel,
-  setYearLevel,
-  lrn,
-  requiredLrnLength,
-  setLrn,
-  schoolName,
-  setSchoolName
+  studentInfo,
+  changeInputHandler
 }) {
-  const changeInputHandler = useCallback((e) => {
-    const value = e.target.value;
-    const targetID = e.target.id;
-    switch (targetID) {
-      case "formCourse":
-        setCourse(value);
+  const onChange = useCallback((e) => {
+    changeInputHandler(e);
+    const id = e.target.id;
+    switch (id) {
+      case "schoolName":
+        debouncedValidateRequiredInput(e, "school-name-error");
+        break;
+      case "course":
         debouncedValidateRequiredInput(e, "course-error");
         break;
-      case "formYearLevel":
-        setYearLevel(value);
+      case "yearLevel":
         debouncedValidateRequiredInput(e, "year-level-error");
         break;
-      case "formLrn":
-        setLrn(value);
+      case "lrn":
         debouncedValidateInput(e, "lrn-error");
-        debouncedValidateExactLength(e, requiredLrnLength, "lrn-error");
-        break;
-        case "formSchoolName":
-        setSchoolName(value);
-        debouncedValidateRequiredInput(e, "school-name-error");
+        debouncedValidateExactLength(e, 12, "lrn-error");
         break;
     }
   }, []);
 
   return (
-    <Form className="mt-4">
+    <Form className="mt-3">
         <h6>School Information</h6>
-
-        <Form.Group className="mb-3" controlId="formSchoolName">
+        <Form.Group className="mb-2" controlId="schoolName">
         <Form.Control
-          onChange={changeInputHandler}
-          value={schoolName}
+          onChange={onChange}
+          value={studentInfo.schoolName}
           type="text"
           placeholder="School name (required)"
         />
         <div id="school-name-error" className="error"></div>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formCourse">
+      <Form.Group className="mb-2" controlId="course">
         <Form.Control
-          onChange={changeInputHandler}
-          value={course}
+          onChange={onChange}
+          value={studentInfo.course}
           type="text"
           placeholder="Course (required)"
         />
         <div id="course-error" className="error"></div>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formYearLevel">
+      <Form.Group className="mb-2" controlId="yearLevel">
         <Form.Select
-          value={yearLevel}
-          onChange={changeInputHandler}
+          value={studentInfo.yearLevel}
+          onChange={onChange}
           aria-label="Year Level"
         >
           <option>Year Level</option>
@@ -77,16 +65,6 @@ function SchoolInformationForm({
           <option value="4th Year">4th Year</option>
         </Form.Select>
         <div id="year-level-error" className="error"></div>
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formLrn">
-        <Form.Control
-          onChange={changeInputHandler}
-          value={lrn}
-          type="number"
-          placeholder="12-digit LRN"
-        />
-        <div id="lrn-error" className="error"></div>
       </Form.Group>
     </Form>
   );

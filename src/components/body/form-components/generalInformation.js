@@ -10,14 +10,10 @@ import {
 } from "./validation";
 import "../../../styles/form-customize.css";
 
-function GeneralInformationForm({ studentInfo, setStudentInfo }) {
-  const changeInputHandler = useCallback((e) => {
-    const { id, value } = e.target;
-    setStudentInfo((prevState) => ({
-      ...prevState,
-      [id]: value,
-    }));
-    console.log(id + "   " + value);
+function GeneralInformationForm({ studentInfo, changeInputHandler }) {
+  const onChange = useCallback((e) => {
+    changeInputHandler(e);
+    const id = e.target.id;
     switch (id) {
       case "name":
         debouncedValidateRequiredInput(e, "name-error");
@@ -37,7 +33,7 @@ function GeneralInformationForm({ studentInfo, setStudentInfo }) {
       <h6>General Information</h6>
       <Form.Group className="mb-2" controlId="name">
         <Form.Control
-          onChange={changeInputHandler}
+          onChange={onChange}
           value={studentInfo.name}
           type="text"
           placeholder="Full Name (required)"
@@ -47,7 +43,7 @@ function GeneralInformationForm({ studentInfo, setStudentInfo }) {
 
       <Form.Group className="mb-2" controlId="email">
         <Form.Control
-          onChange={changeInputHandler}
+          onChange={onChange}
           value={studentInfo.email}
           type="email"
           placeholder="Email (required)"
@@ -59,7 +55,7 @@ function GeneralInformationForm({ studentInfo, setStudentInfo }) {
         <Col>
           <Form.Group className="mb-2" controlId="city">
             <Form.Control
-              onChange={changeInputHandler}
+              onChange={onChange}
               value={studentInfo.city}
               type="text"
               placeholder="City/Municipality"
@@ -70,7 +66,7 @@ function GeneralInformationForm({ studentInfo, setStudentInfo }) {
         <Col>
           <Form.Group className="mb-2" controlId="province">
             <Form.Control
-              onChange={changeInputHandler}
+              onChange={onChange}
               value={studentInfo.province}
               type="text"
               placeholder="State/Province"
