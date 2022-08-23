@@ -7,12 +7,13 @@ function IdPreview({ studentInfo, idProperties }) {
       style={{
         background: idProperties.outerColor,
         color: idProperties.outerTextColor,
+        fontFamily: idProperties.bodyFont
       }}
     >
       <div id="id-header">
-        <div id="school-name-preview">{studentInfo.schoolName}</div>
+        <div id="school-name-preview" style={{fontFamily: idProperties.headerFont}}>{studentInfo.schoolName}</div>
         <div
-          className="line"
+          id="line"
           style={{ background: idProperties.innerColor }}
         ></div>
       </div>

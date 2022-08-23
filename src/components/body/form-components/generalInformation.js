@@ -1,6 +1,4 @@
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import React, { useCallback } from "react";
 import "react-phone-number-input/style.css";
 import {
@@ -52,20 +50,21 @@ function GeneralInformationForm({ studentInfo, changeInputHandler }) {
         <div id="email-error" className="error"></div>
       </Form.Group>
 
-      <Row>
-        <Col>
-          <Form.Group className="mb-2" controlId="address">
-            <Form.Control
-              onChange={onChange}
-              value={studentInfo.address}
-              type="text"
-              placeholder="Address"
-              maxLength={45}
-            />
-            <div id="address-error" className="error"></div>
-          </Form.Group>
-        </Col>
-      </Row>
+      <Form.Group className="mb-2" controlId="address">
+        <Form.Control
+          onChange={onChange}
+          value={studentInfo.address}
+          type="text"
+          placeholder="Address"
+          maxLength={45}
+        />
+        <div id="address-error" className="error"></div>
+      </Form.Group>
+
+      <Form.Group controlId="photo" className="mb-2">
+        <Form.Label>Insert Image</Form.Label>
+        <Form.Control type="file" accept="image/*" onChange={onChange}/>
+      </Form.Group>
     </Form>
   );
 }

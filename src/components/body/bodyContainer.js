@@ -8,6 +8,7 @@ import IdContainer from "./id-components/idContainer";
 import defaultIcon from "../../assets/default-photo.jpg";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
+/*eslint-disable*/
 
 function BodyContainer() {
   const defaultStudentInformation = {
@@ -18,7 +19,18 @@ function BodyContainer() {
     course: "",
     photo: defaultIcon,
   };
+
+  const defaultIdProperties = {
+    outerColor: "#fff",
+    innerColor: "#800000",
+    innerTextColor: "#fff",
+    outerTextColor: "#000000",
+    headerFont: "Verdana",
+    bodyFont: "Verdana"
+  }
+
   const [studentInfo, setStudentInfo] = useState(defaultStudentInformation);
+  const [idProperties, setIdProperties] = useState(defaultIdProperties);
 
   const changeInputHandler = useCallback((e) => {
     const { id, value } = e.target;
@@ -43,7 +55,7 @@ function BodyContainer() {
         />
       </Col>
       <Col md={7}>
-        <IdContainer studentInfo={studentInfo} />
+        <IdContainer studentInfo={studentInfo} idProperties={idProperties}/>
       </Col>
       </Row>
     </Container>
