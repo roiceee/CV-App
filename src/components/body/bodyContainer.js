@@ -10,7 +10,7 @@ import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 
 function BodyContainer() {
-  let defaultStudentInformation = {
+  const defaultStudentInformation = {
     name: "",
     email: "",
     address: "",
@@ -32,7 +32,7 @@ function BodyContainer() {
     <Container>
       <Header />
       <Row>
-      <Col md={6}>
+      <Col md={5}>
         <GeneralInformationForm
           studentInfo={studentInfo}
           changeInputHandler={changeInputHandler}
@@ -42,7 +42,7 @@ function BodyContainer() {
           changeInputHandler={changeInputHandler}
         />
       </Col>
-      <Col md={6}>
+      <Col md={7}>
         <IdContainer studentInfo={studentInfo} />
       </Col>
       </Row>
