@@ -13,7 +13,7 @@ function IdPreview({ studentInfo, idProperties }) {
       <div id="id-header">
         <div id="school-name-preview" style={{fontFamily: idProperties.headerFont}}>{studentInfo.schoolName}</div>
         <div
-          id="line"
+          id="header-line"
           style={{ background: idProperties.innerColor }}
         ></div>
       </div>
@@ -25,7 +25,7 @@ function IdPreview({ studentInfo, idProperties }) {
         }}
       >
         <div id="image-holder">
-          <img className="img-fluid" src={studentInfo.photo}></img>
+          <img id="image-container" src={studentInfo.photo}></img>
         </div>
         <div id="main-details">
           <div id="name-preview">{studentInfo.name}</div>
@@ -33,13 +33,13 @@ function IdPreview({ studentInfo, idProperties }) {
         </div>
       </div>
       <div id="secondary-details">
-        <div>
-          <div className="d-flex">Email:&nbsp;</div>
+        <div className="d-flex">
+          <div>Email:&nbsp;</div>
           <div id="email-preview">{studentInfo.email}</div>
         </div>
         <div>
-          <div>
-            <div className="d-flex">Address:&nbsp;</div>
+          <div className="d-flex">
+            <div>Address:&nbsp;</div>
             <div id="address-preview">{studentInfo.address}</div>
           </div>
         </div>

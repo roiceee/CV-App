@@ -2,7 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import GeneralInformationForm from "./form-components/generalInformation";
 import Header from "./header";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import SchoolInformationForm from "./form-components/schoolInformationForm";
 import IdContainer from "./id-components/idContainer";
 import defaultIcon from "../../assets/default-photo.jpg";
@@ -32,13 +32,6 @@ function BodyContainer() {
   const [studentInfo, setStudentInfo] = useState(defaultStudentInformation);
   const [idProperties, setIdProperties] = useState(defaultIdProperties);
 
-  const changeInputHandler = useCallback((e) => {
-    const { id, value } = e.target;
-    setStudentInfo((studentInfo) => ({
-      ...studentInfo,
-      [id]: value,
-    }));
-  }, []);
 
   return (
     <Container>
@@ -47,15 +40,15 @@ function BodyContainer() {
       <Col md={5}>
         <GeneralInformationForm
           studentInfo={studentInfo}
-          changeInputHandler={changeInputHandler}
+          setStudentInfo={setStudentInfo}
         />
         <SchoolInformationForm
           studentInfo={studentInfo}
-          changeInputHandler={changeInputHandler}
+          setStudentInfo={setStudentInfo}
         />
       </Col>
       <Col md={7}>
-        <IdContainer studentInfo={studentInfo} idProperties={idProperties}/>
+        <IdContainer studentInfo={studentInfo} idProperties={idProperties} setStudentInfo={setStudentInfo}/>
       </Col>
       </Row>
     </Container>

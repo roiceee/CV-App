@@ -2,16 +2,22 @@ import React, { useCallback } from "react";
 import Form from "react-bootstrap/Form";
 import {
   debouncedValidateRequiredInput,
-  debouncedValidateInput,
-  debouncedValidateExactLength,
 } from "./validation";
 
 function SchoolInformationForm({
   studentInfo,
-  changeInputHandler
+  setStudentInfo
 }) {
-  const onChange = useCallback((e) => {
-    changeInputHandler(e);
+  const changeInputHandler = useCallback((e) => {
+    const { id, value } = e.target;
+    validate(e);
+    setStudentInfo((studentInfo) => ({
+      ...studentInfo,
+      [id]: value,
+    }));
+  }, []);
+
+  const validate = useCallback((e) => {
     const id = e.target.id;
     switch (id) {
       case "schoolName":
@@ -19,13 +25,6 @@ function SchoolInformationForm({
         break;
       case "course":
         debouncedValidateRequiredInput(e, "course-error");
-        break;
-      case "yearLevel":
-        debouncedValidateRequiredInput(e, "year-level-error");
-        break;
-      case "lrn":
-        debouncedValidateInput(e, "lrn-error");
-        debouncedValidateExactLength(e, 12, "lrn-error");
         break;
     }
   }, []);
@@ -35,7 +34,7 @@ function SchoolInformationForm({
         <h6>School Information</h6>
         <Form.Group className="mb-2" controlId="schoolName">
         <Form.Control
-          onChange={onChange}
+          onChange={changeInputHandler}
           value={studentInfo.schoolName}
           type="text"
           placeholder="School name (required)"
@@ -45,7 +44,7 @@ function SchoolInformationForm({
 
       <Form.Group className="mb-2" controlId="course">
         <Form.Control
-          onChange={onChange}
+          onChange={changeInputHandler}
           value={studentInfo.course}
           type="text"
           placeholder="Course (required)"

@@ -1,16 +1,26 @@
 import Form from "react-bootstrap/Form";
-import React, { useCallback } from "react";
+import React, { useCallback, useRef } from "react";
 import "react-phone-number-input/style.css";
 import {
   debouncedValidateRequiredInput,
   debouncedValidateEmail,
-  debouncedValidateInput,
 } from "./validation";
 import "../../../styles/form-customize.css";
 
-function GeneralInformationForm({ studentInfo, changeInputHandler }) {
-  const onChange = useCallback((e) => {
-    changeInputHandler(e);
+function GeneralInformationForm({ studentInfo, setStudentInfo }) {
+
+  const fileInput = useRef(null);
+
+  const onImageUpload = useCallback(() => {
+    const imageFile = fileInput.current.files[0];
+    const id = fileInput.current.id;
+    setStudentInfo((studentInfo) => ({
+      ...studentInfo,
+      [id]: URL.createObjectURL(imageFile)
+    }));
+  })
+
+  const validate = useCallback((e) => {
     const id = e.target.id;
     switch (id) {
       case "name":
@@ -19,10 +29,16 @@ function GeneralInformationForm({ studentInfo, changeInputHandler }) {
       case "email":
         debouncedValidateEmail(e, "email-error");
         break;
-      case "address":
-        debouncedValidateInput(e, "address-error");
-        break;
     }
+  }, []);
+
+    const changeInputHandler = useCallback((e) => {
+    const { id, value } = e.target;
+    validate(e);
+    setStudentInfo((studentInfo) => ({
+      ...studentInfo,
+      [id]: value,
+    }));
   }, []);
 
   return (
@@ -30,7 +46,7 @@ function GeneralInformationForm({ studentInfo, changeInputHandler }) {
       <h6>General Information</h6>
       <Form.Group className="mb-2" controlId="name">
         <Form.Control
-          onChange={onChange}
+          onChange={changeInputHandler}
           value={studentInfo.name}
           type="text"
           placeholder="Full Name (required)"
@@ -41,7 +57,7 @@ function GeneralInformationForm({ studentInfo, changeInputHandler }) {
 
       <Form.Group className="mb-2" controlId="email">
         <Form.Control
-          onChange={onChange}
+          onChange={changeInputHandler}
           value={studentInfo.email}
           type="email"
           placeholder="Email (required)"
@@ -52,7 +68,7 @@ function GeneralInformationForm({ studentInfo, changeInputHandler }) {
 
       <Form.Group className="mb-2" controlId="address">
         <Form.Control
-          onChange={onChange}
+          onChange={changeInputHandler}
           value={studentInfo.address}
           type="text"
           placeholder="Address"
@@ -62,8 +78,8 @@ function GeneralInformationForm({ studentInfo, changeInputHandler }) {
       </Form.Group>
 
       <Form.Group controlId="photo" className="mb-2">
-        <Form.Label>Insert Image</Form.Label>
-        <Form.Control type="file" accept="image/*" onChange={onChange}/>
+        <Form.Label>ID Picture</Form.Label>
+        <Form.Control type="file" accept="image/*" ref={fileInput} onChange={onImageUpload}/>
       </Form.Group>
     </Form>
   );

@@ -74,6 +74,21 @@ function removeErrorWarning(e, errorTextContainer) {
   errorTextContainer.textContent = "";
 }
 
+function resetForms() {
+    const forms = document.querySelectorAll('input');
+    const errorTextContainers = document.querySelectorAll('.error');
+    const fileInputForm = document.getElementById('photo');
+    forms.forEach(form => {
+      if (form.classList.contains('invalid-form')) {
+        form.classList.remove('invalid-form');
+      }
+    })
+    errorTextContainers.forEach(errorTextContainer => {
+      errorTextContainer.textContent = "";
+    })
+    fileInputForm.value = null;
+}
+
 const debouncedValidateRequiredInput = debounce(validateRequiredInput, 1000);
 const debouncedValidateInput = debounce(validateInput, 1000);
 const debouncedValidateEmail = debounce(validateEmail, 1000);
@@ -83,5 +98,6 @@ export {
   debouncedValidateRequiredInput,
   debouncedValidateInput,
   debouncedValidateEmail,
-  debouncedValidateExactLength
+  debouncedValidateExactLength,
+  resetForms
 };

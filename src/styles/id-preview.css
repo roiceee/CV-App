@@ -17,16 +17,11 @@
 }
 
 #course-preview {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     margin-top: 16px;
     width: 190px;
     height: 40px;
     overflow-wrap: break-word;
-}
-
-#image-holder {
-    width: 230px;
-    height: 230px;
 }
 
 #inner-container {
@@ -63,9 +58,20 @@
     text-align: center;
 }
 
-#line {
+#header-line {
     margin: auto;
     height: 2px;
     width: 220px;
     background-color: rgb(71, 71, 71);
+}
+
+#image-holder {
+    width: 230px;
+    height: 230px;
+    background-color: white;
+}
+
+#image-container {
+    width: 230px;
+    height: 230px;
 }
