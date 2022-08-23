@@ -3,15 +3,21 @@ import React from "react";
 function IdPreview({ studentInfo, idProperties }) {
   return (
     <div
+      id="id-image"
       className="preview border border-2"
       style={{
         background: idProperties.outerColor,
         color: idProperties.outerTextColor,
-        fontFamily: idProperties.bodyFont
+        fontFamily: idProperties.bodyFont,
       }}
     >
       <div id="id-header">
-        <div id="school-name-preview" style={{fontFamily: idProperties.headerFont}}>{studentInfo.schoolName}</div>
+        <div
+          id="school-name-preview"
+          style={{ fontFamily: idProperties.headerFont }}
+        >
+          {studentInfo.schoolName}
+        </div>
         <div
           id="header-line"
           style={{ background: idProperties.innerColor }}
