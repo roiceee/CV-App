@@ -9,7 +9,7 @@ function IdContainer({studentInfo}) {
   return (
     <Container className="mt-4">
       <Row>
-        <h5>ID Preview</h5>
+        <h6>ID Preview</h6>
         <hr></hr>
         <div className="mx-auto d-block">
             {/* this is where the id is previewed */}

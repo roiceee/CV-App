@@ -5,7 +5,9 @@ import Header from "./header";
 import { useState, useCallback } from "react";
 import SchoolInformationForm from "./form-components/schoolInformationForm";
 import IdContainer from "./id-components/idContainer";
-import defaultIcon from "../../assets/default-photo.jpg"
+import defaultIcon from "../../assets/default-photo.jpg";
+import Col from "react-bootstrap/esm/Col";
+import Row from "react-bootstrap/esm/Row";
 
 function BodyContainer() {
   let defaultStudentInformation = {
@@ -14,7 +16,7 @@ function BodyContainer() {
     address: "",
     schoolName: "Roice University",
     course: "",
-    photo: defaultIcon
+    photo: defaultIcon,
   };
   const [studentInfo, setStudentInfo] = useState(defaultStudentInformation);
 
@@ -29,15 +31,21 @@ function BodyContainer() {
   return (
     <Container>
       <Header />
-      <GeneralInformationForm
-        studentInfo={studentInfo}
-        changeInputHandler={changeInputHandler}
-      />
-      <SchoolInformationForm
-        studentInfo={studentInfo}
-        changeInputHandler={changeInputHandler}
-      />
-      <IdContainer studentInfo={studentInfo}/>
+      <Row>
+      <Col md={6}>
+        <GeneralInformationForm
+          studentInfo={studentInfo}
+          changeInputHandler={changeInputHandler}
+        />
+        <SchoolInformationForm
+          studentInfo={studentInfo}
+          changeInputHandler={changeInputHandler}
+        />
+      </Col>
+      <Col md={6}>
+        <IdContainer studentInfo={studentInfo} />
+      </Col>
+      </Row>
     </Container>
   );
 }
