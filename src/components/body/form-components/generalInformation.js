@@ -36,7 +36,7 @@ function GeneralInformationForm({ studentInfo, changeInputHandler }) {
           value={studentInfo.name}
           type="text"
           placeholder="Full Name (required)"
-          maxLength={30 }
+          maxLength={30}
         />
         <div id="name-error" className="error"></div>
       </Form.Group>

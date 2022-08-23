@@ -1,9 +1,10 @@
 .preview {
     display: block;
-    height: 500px;
+    height: fit-content;
     padding: 24px 32px 24px 32px;
     width: 340px!important;
     font-size: 0.9rem;
+    box-sizing: border-box;
 }
 
 #name-preview {
@@ -23,19 +24,18 @@
 }
 
 #image-holder {
-    width: 220px;
-    height: 220px;
+    width: 230px;
+    height: 230px;
 }
 
 #inner-container {
-    margin-top: 32px;
-    padding: 8px;
+    margin-top: 12px;
+    padding: 4px;
     width: 236px;
     height: 340px;
 }
 
 #address-preview {
-    height: 36px;
     width: 210px;
     overflow-wrap: break-word;
 }
@@ -43,4 +43,21 @@
 #secondary-details {
     font-size: 0.8rem;
     margin-top: 12px;
+}
+
+#logo-preview {
+    height: 50px;
+    width: 50px;
+}
+
+#school-name-preview {
+    font-size: 1.1rem;
+    overflow-wrap: break-word;
+}
+
+.line {
+    margin: auto;
+    height: 2px;
+    width: 220px;
+    background-color: rgb(71, 71, 71);
 }
