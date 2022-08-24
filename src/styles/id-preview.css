@@ -1,10 +1,11 @@
 .preview {
     display: block;
     height: fit-content;
-    padding: 24px 32px 24px 32px;
+    padding: 18px 18px 18px 18px;
     width: 340px!important;
     font-size: 0.9rem;
     box-sizing: border-box;
+    background-clip: content-box;
 }
 
 #name-preview {

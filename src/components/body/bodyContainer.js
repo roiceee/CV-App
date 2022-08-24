@@ -21,6 +21,7 @@ function BodyContainer() {
   };
 
   const defaultIdProperties = {
+    borderColor: "#800000",
     outerColor: "#fff",
     innerColor: "#800000",
     innerTextColor: "#fff",
