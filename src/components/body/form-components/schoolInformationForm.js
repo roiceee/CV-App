@@ -11,7 +11,6 @@ function SchoolInformationForm({
 }) {
   const changeInputHandler = useCallback((e) => {
     const { id, value } = e.target;
-    
     debouncedValidateSchoolInformation(id);
     setStudentInfo((studentInfo) => ({
       ...studentInfo,
@@ -22,7 +21,7 @@ function SchoolInformationForm({
   return (
     <Form className="mt-3">
         <h6>School Information</h6>
-        <Form.Group className="mb-2" controlId="school-name">
+        <Form.Group className="mb-2" controlId="schoolName">
         <Form.Control
           onChange={changeInputHandler}
           value={studentInfo.schoolName}
