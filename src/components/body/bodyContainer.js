@@ -15,7 +15,7 @@ function BodyContainer() {
     name: "",
     email: "",
     address: "",
-    schoolName: "Roice University",
+    schoolName: "",
     course: "",
     photo: defaultIcon,
   };
@@ -27,30 +27,33 @@ function BodyContainer() {
     innerTextColor: "#fff",
     outerTextColor: "#000000",
     headerFont: "Verdana",
-    bodyFont: "Verdana"
-  }
+    bodyFont: "Verdana",
+  };
 
   const [studentInfo, setStudentInfo] = useState(defaultStudentInformation);
   const [idProperties, setIdProperties] = useState(defaultIdProperties);
-
 
   return (
     <Container>
       <Header />
       <Row>
-      <Col md={5}>
-        <GeneralInformationForm
-          studentInfo={studentInfo}
-          setStudentInfo={setStudentInfo}
-        />
-        <SchoolInformationForm
-          studentInfo={studentInfo}
-          setStudentInfo={setStudentInfo}
-        />
-      </Col>
-      <Col md={7}>
-        <IdContainer studentInfo={studentInfo} idProperties={idProperties} setStudentInfo={setStudentInfo}/>
-      </Col>
+        <Col md={5}>
+          <GeneralInformationForm
+            studentInfo={studentInfo}
+            setStudentInfo={setStudentInfo}
+          />
+          <SchoolInformationForm
+            studentInfo={studentInfo}
+            setStudentInfo={setStudentInfo}
+          />
+        </Col>
+        <Col md={7}>
+          <IdContainer
+            studentInfo={studentInfo}
+            idProperties={idProperties}
+            setStudentInfo={setStudentInfo}
+          />
+        </Col>
       </Row>
     </Container>
   );

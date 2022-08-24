@@ -1,76 +1,76 @@
-import { debounce } from "lodash";
 
-function validateRequiredInput(e, errorTextContainerID) {
+
+function validateRequiredInput(DOMElement, errorTextContainerID) {
   const errorTextContainer = document.getElementById(errorTextContainerID);
-  if (hasNoInput(e, errorTextContainer)) {
+  if (hasNoInput(DOMElement, errorTextContainer)) {
     return;
   }
-  if (hasSpecialCharacters(e, errorTextContainer)) {
+  if (hasSpecialCharacters(DOMElement, errorTextContainer)) {
     return;
   }
-  removeErrorWarning(e, errorTextContainer);
+  removeErrorWarning(DOMElement, errorTextContainer);
 }
 
-function validateInput(e, errorTextContainerID) {
+function validateInput(DOMElement, errorTextContainerID) {
   const errorTextContainer = document.getElementById(
     errorTextContainerID
   );
-  if (hasSpecialCharacters(e, errorTextContainer)) {
+  if (hasSpecialCharacters(DOMElement, errorTextContainer)) {
     return;
   }
-  removeErrorWarning(e, errorTextContainer);
+  removeErrorWarning(DOMElement, errorTextContainer);
 }
 
-function validateEmail(e, errorTextContainerID) {
+function validateEmail(DOMElement, errorTextContainerID) {
   const errorTextContainer = document.getElementById(errorTextContainerID);
   const pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-  const value = e.target.value;
-  if (hasNoInput(e, errorTextContainer)) {
+  const value = DOMElement.value;
+  if (hasNoInput(DOMElement, errorTextContainer)) {
     return;
   }
   if (!value.match(pattern)) {
-    e.target.classList.add("invalid-form");
+    DOMElement.classList.add("invalid-form");
     errorTextContainer.textContent = "Must be a valid email address.";
     return;
   }
-  removeErrorWarning(e, errorTextContainer);
+  removeErrorWarning(DOMElement, errorTextContainer);
 }
 
-function validateExactLength(e, requiredLength, errorTextContainerID) {
+function validateExactLength(DOMElement, requiredLength, errorTextContainerID) {
   const errorTextContainer = document.getElementById(errorTextContainerID);
-  const value = e.target.value;
+  const value = DOMElement.value;
   if (value === "") {
-    removeErrorWarning(e, errorTextContainer);
+    removeErrorWarning(DOMElement, errorTextContainer);
     return;
   }
   if (value.length !== requiredLength) {
     errorTextContainer.textContent = `Input should contain exactly ${requiredLength} characters.`
-    e.target.classList.add("invalid-form");
+    DOMElement.classList.add("invalid-form");
     return true;
   }
 }
 
-function hasSpecialCharacters(e, errorTextContainer) {
-  const value = e.target.value;
+function hasSpecialCharacters(DOMElement, errorTextContainer) {
+  const value = DOMElement.value;
   const pattern = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/;
   if (value.match(pattern)) {
     errorTextContainer.textContent = "Should not contain special characters.";
-    e.target.classList.add("invalid-form");
+    DOMElement.classList.add("invalid-form");
     return true;
   }
 }
 
-function hasNoInput(e, errorTextContainer) {
-  const value = e.target.value;
+function hasNoInput(DOMElement, errorTextContainer) {
+  const value = DOMElement.value;
   if (value.trim() === "") {
-    e.target.classList.add("invalid-form");
+    DOMElement.classList.add("invalid-form");
     errorTextContainer.textContent = "This field is required.";
     return true;
   }
 }
 
-function removeErrorWarning(e, errorTextContainer) {
-  e.target.classList.remove("invalid-form");
+function removeErrorWarning(DOMElement, errorTextContainer) {
+  DOMElement.classList.remove("invalid-form");
   errorTextContainer.textContent = "";
 }
 
@@ -89,15 +89,15 @@ function resetForms() {
     fileInputForm.value = null;
 }
 
-const debouncedValidateRequiredInput = debounce(validateRequiredInput, 1000);
-const debouncedValidateInput = debounce(validateInput, 1000);
-const debouncedValidateEmail = debounce(validateEmail, 1000);
-const debouncedValidateExactLength = debounce(validateExactLength, 1000);
+// const debouncedValidateRequiredInput = debounce(validateRequiredInput, 1000);
+// const debouncedValidateInput = debounce(validateInput, 1000);
+// const debouncedValidateEmail = debounce(validateEmail, 1000);
+// const debouncedValidateExactLength = debounce(validateExactLength, 1000);
 
 export {
-  debouncedValidateRequiredInput,
-  debouncedValidateInput,
-  debouncedValidateEmail,
-  debouncedValidateExactLength,
-  resetForms
+  validateRequiredInput,
+  validateInput,
+  validateEmail,
+  validateExactLength,
+  resetForms,
 };

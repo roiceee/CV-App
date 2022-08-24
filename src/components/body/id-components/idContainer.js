@@ -7,6 +7,9 @@ import Button from "react-bootstrap/esm/Button";
 import defaultIcon from "../../../assets/default-photo.jpg";
 import { resetForms } from "../form-components/validation";
 import html2canvas from "html2canvas";
+import { validateGeneralInformation } from "../form-components/generalInformation";
+import { validateSchoolInformation } from "../form-components/schoolInformationForm";
+
 
 function IdContainer({ studentInfo, idProperties, setStudentInfo }) {
 
@@ -25,11 +28,20 @@ function IdContainer({ studentInfo, idProperties, setStudentInfo }) {
   const saveId = () => {
     html2canvas(document.getElementById("id-image")).then((canvas) => {
       let a = document.createElement("a");
-      a.download = `${studentInfo.name.split(" ")[0]}'s ID.png`;
+      a.download = "ID.png";
       a.href = canvas.toDataURL("image/png");
       a.click();
     });
   };
+
+  const saveButtonEvent = useCallback(
+    async() => {
+        const isValid = await validateAllForms();
+        if (!isValid) {
+          return;
+        }
+        saveId();
+    }, [])
 
   return (
     <Container className="mt-4">
@@ -48,7 +60,7 @@ function IdContainer({ studentInfo, idProperties, setStudentInfo }) {
               className="id-button"
               variant="action"
               type="button"
-              onClick={saveId}
+              onClick={saveButtonEvent}
             >
               Save
             </Button>
@@ -72,6 +84,23 @@ function IdContainer({ studentInfo, idProperties, setStudentInfo }) {
       </Row>
     </Container>
   );
+}
+
+async function validateAllForms() {
+  return new Promise(resolve => {
+    const formsThatNeedValidation = document.querySelectorAll('.need-validation');
+    formsThatNeedValidation.forEach((form) => {
+      validateGeneralInformation(form.id);
+      validateSchoolInformation(form.id);
+    })
+    formsThatNeedValidation.forEach((form => {
+      if (form.classList.contains('invalid-form')) {
+        resolve(false);
+        return;
+      } 
+    }))
+    resolve(true);
+  })
 }
 
 export default IdContainer;
