@@ -48,7 +48,7 @@ function IdContainer({ studentInfo, idProperties, setStudentInfo }) {
       <h6>ID Preview</h6>
       <hr></hr>
       <Row>
-        <Col className="mx-auto mx-sm-0">
+        <Col  className="mx-auto mx-sm-0">
           <IdPreview
             idProperties={idProperties}
             studentInfo={studentInfo}

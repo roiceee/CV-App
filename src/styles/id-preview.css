@@ -6,6 +6,7 @@
     font-size: 0.9rem;
     box-sizing: border-box;
     background-clip: content-box;
+    margin: auto;
 }
 
 #name-preview {

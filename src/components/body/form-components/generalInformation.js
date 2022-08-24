@@ -71,7 +71,7 @@ function GeneralInformationForm({
       </Form.Group>
 
       <Form.Group controlId="photo" className="mb-2">
-        <Form.Label>ID Picture</Form.Label>
+        <Form.Label>ID Picture <span style={{fontSize: "0.7rem"}}>(same width and height for best results)</span></Form.Label>
         <Form.Control
           type="file"
           accept="image/*"
