@@ -16,7 +16,7 @@ function IdCustomizer({ idProperties, setIdProperties }) {
   }, []);
 
   return (
-    <Container className="mt-2" style={{ fontSize: "0.8rem" }}>
+    <Container className="mt-3" style={{ fontSize: "0.8rem" }}>
       <h6>Color</h6>
       <Row className="row-cols-3">
         <Form.Group controlId="borderColor" className="mb-3">
@@ -65,7 +65,7 @@ function IdCustomizer({ idProperties, setIdProperties }) {
           ></Form.Control>
         </Form.Group>
       </Row>
-      <Row className="mt-2">
+      <Row className="mt-1">
         <h6>Font Style</h6>
         <Form.Group controlId="headerFont" className="mb-3">
           <Form.Label>School Name Font</Form.Label>
