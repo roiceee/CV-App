@@ -48,7 +48,7 @@ function IdPreview({ studentInfo, idProperties }) {
           <div>
             <div className="d-flex">
               <div>Address:&nbsp;</div>
-              <div id="address-preview">{studentInfo.address}</div>
+              <div id="address-preview">{studentInfo.address.trim() === "" ? "Prefer to not say." : studentInfo.address}</div>
             </div>
           </div>
         </div>

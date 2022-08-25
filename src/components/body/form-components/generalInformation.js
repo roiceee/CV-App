@@ -47,7 +47,7 @@ function GeneralInformationForm({
         <div id="name-error" className="error"></div>
       </Form.Group>
 
-      <Form.Group className="mb-2 need-validation" controlId="email">
+      <Form.Group className="mb-2" controlId="email">
         <Form.Control
           onChange={changeInputHandler}
           value={studentInfo.email}
@@ -66,6 +66,7 @@ function GeneralInformationForm({
           type="text"
           placeholder="Address"
           maxLength={45}
+          className="need-validation"
         />
         <div id="address-error" className="error"></div>
       </Form.Group>
