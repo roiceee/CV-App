@@ -77,6 +77,7 @@
 #image-container {
     width: 230px;
     height: 230px;
+    object-fit: cover!important;
 }
 
 #outline {
