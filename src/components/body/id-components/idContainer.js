@@ -1,27 +1,31 @@
-import React, { useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import IdPreview from "./idPreview";
 import Button from "react-bootstrap/esm/Button";
-import defaultIcon from "../../../assets/default-photo.jpg";
 import { resetForms } from "../form-components/validation";
 import html2canvas from "html2canvas";
 import { validateGeneralInformation } from "../form-components/generalInformation";
 import { validateSchoolInformation } from "../form-components/schoolInformationForm";
+import IdCustomizer from "./idCustomizer";
 
+function IdContainer({ studentInfo, setStudentInfo, defaultStudentInformation }) {
+  const defaultIdProperties = {
+    borderColor: "#800000",
+    outerColor: "#FFFFFF",
+    innerColor: "#800000",
+    innerTextColor: "#FFFFFF",
+    outerTextColor: "#000000",
+    headerFont: "Verdana",
+    bodyFont: "Verdana",
+  };
 
-function IdContainer({ studentInfo, idProperties, setStudentInfo }) {
+  const [idProperties, setIdProperties] = useState(defaultIdProperties);
 
   const resetStudentInfo = useCallback(() => {
-    setStudentInfo({
-      name: "",
-      email: "",
-      address: "",
-      schoolName: "Roice University",
-      course: "",
-      photo: defaultIcon,
-    });
+    setStudentInfo({...defaultStudentInformation});
+    setIdProperties({...defaultIdProperties});
     resetForms();
   }, []);
 
@@ -34,28 +38,31 @@ function IdContainer({ studentInfo, idProperties, setStudentInfo }) {
     });
   };
 
-  const saveButtonEvent = useCallback(
-    async() => {
-        const isValid = await validateAllForms();
-        if (!isValid) {
-          return;
-        }
-        saveId();
-    }, [])
+  const saveButtonEvent = useCallback(async () => {
+    const isValid = await validateAllForms();
+    if (!isValid) {
+      return;
+    }
+    saveId();
+  }, []);
 
   return (
     <Container className="mt-4">
       <h6>ID Preview</h6>
       <hr></hr>
       <Row>
-        <Col  className="mx-auto mx-sm-0">
+        <Col className="mx-auto mx-sm-0">
           <IdPreview
             idProperties={idProperties}
             studentInfo={studentInfo}
           />
         </Col>
         <Col>
-          <Row className="d-flex flex-column gap-1 mt-3 mx-auto align-items-center">
+          <IdCustomizer
+            idProperties={idProperties}
+            setIdProperties={setIdProperties}
+          />
+          <Row className="d-flex flex-column gap-2 mt-3 mx-auto align-items-center">
             <Button
               className="id-button"
               variant="action"
@@ -73,13 +80,6 @@ function IdContainer({ studentInfo, idProperties, setStudentInfo }) {
               Reset
             </Button>
           </Row>
-          <Row className="mt-3">
-            <p id="notice">
-              Hi! This is a practice project. There would be no collection of
-              data. However, please take precautions in putting your personal
-              information online.
-            </p>
-          </Row>
         </Col>
       </Row>
     </Container>
@@ -87,20 +87,21 @@ function IdContainer({ studentInfo, idProperties, setStudentInfo }) {
 }
 
 async function validateAllForms() {
-  return new Promise(resolve => {
-    const formsThatNeedValidation = document.querySelectorAll('.need-validation');
+  return new Promise((resolve) => {
+    const formsThatNeedValidation =
+      document.querySelectorAll(".need-validation");
     formsThatNeedValidation.forEach((form) => {
       validateGeneralInformation(form.id);
       validateSchoolInformation(form.id);
-    })
-    formsThatNeedValidation.forEach((form => {
-      if (form.classList.contains('invalid-form')) {
+    });
+    formsThatNeedValidation.forEach((form) => {
+      if (form.classList.contains("invalid-form")) {
         resolve(false);
         return;
-      } 
-    }))
+      }
+    });
     resolve(true);
-  })
+  });
 }
 
 export default IdContainer;

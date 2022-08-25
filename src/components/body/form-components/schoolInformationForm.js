@@ -62,7 +62,7 @@ function SchoolInformationForm({
 }
 
 function validateSchoolInformation(id) {
-  if (id === "school-name") {
+  if (id === "schoolName") {
     const schoolForm = document.getElementById(id);
     validateRequiredInput(schoolForm, "school-name-error");
   }

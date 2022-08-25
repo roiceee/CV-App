@@ -2,7 +2,7 @@ import React from "react";
 
 function IdPreview({ studentInfo, idProperties }) {
   return (
-    <div>
+    <div id="outline" className="border border-1 mx-auto">
       <div
         id="id-image"
         className="preview"
@@ -10,7 +10,7 @@ function IdPreview({ studentInfo, idProperties }) {
           background: idProperties.outerColor,
           color: idProperties.outerTextColor,
           fontFamily: idProperties.bodyFont,
-          border: `8px solid ${idProperties.borderColor}`
+          border: `8px solid ${idProperties.borderColor}`,
         }}
       >
         <div id="id-header">

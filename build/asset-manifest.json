@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/ID-Generator/static/css/main.2eedcaa3.css",
-    "main.js": "/ID-Generator/static/js/main.32279ee6.js",
+    "main.css": "/ID-Generator/static/css/main.e08afdd3.css",
+    "main.js": "/ID-Generator/static/js/main.4c8403b0.js",
     "static/media/default-photo.jpg": "/ID-Generator/static/media/default-photo.d6c3b96347190a465d66.jpg",
     "index.html": "/ID-Generator/index.html",
-    "main.2eedcaa3.css.map": "/ID-Generator/static/css/main.2eedcaa3.css.map",
-    "main.32279ee6.js.map": "/ID-Generator/static/js/main.32279ee6.js.map"
+    "main.e08afdd3.css.map": "/ID-Generator/static/css/main.e08afdd3.css.map",
+    "main.4c8403b0.js.map": "/ID-Generator/static/js/main.4c8403b0.js.map"
   },
   "entrypoints": [
-    "static/css/main.2eedcaa3.css",
-    "static/js/main.32279ee6.js"
+    "static/css/main.e08afdd3.css",
+    "static/js/main.4c8403b0.js"
   ]
 }

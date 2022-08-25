@@ -8,7 +8,6 @@ import IdContainer from "./id-components/idContainer";
 import defaultIcon from "../../assets/default-photo.jpg";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
-/*eslint-disable*/
 
 function BodyContainer() {
   const defaultStudentInformation = {
@@ -19,19 +18,7 @@ function BodyContainer() {
     course: "",
     photo: defaultIcon,
   };
-
-  const defaultIdProperties = {
-    borderColor: "#800000",
-    outerColor: "#fff",
-    innerColor: "#800000",
-    innerTextColor: "#fff",
-    outerTextColor: "#000000",
-    headerFont: "Verdana",
-    bodyFont: "Verdana",
-  };
-
   const [studentInfo, setStudentInfo] = useState(defaultStudentInformation);
-  const [idProperties, setIdProperties] = useState(defaultIdProperties);
 
   return (
     <Container>
@@ -46,12 +33,19 @@ function BodyContainer() {
             studentInfo={studentInfo}
             setStudentInfo={setStudentInfo}
           />
+          <Row className="mt-3">
+            <p id="notice">
+              Hi! There would be no collection of
+              data. However, please take precautions in putting your personal
+              information online.
+            </p>
+          </Row>
         </Col>
         <Col md={7}>
           <IdContainer
             studentInfo={studentInfo}
-            idProperties={idProperties}
             setStudentInfo={setStudentInfo}
+            defaultStudentInformation={defaultStudentInformation}
           />
         </Col>
       </Row>

@@ -78,3 +78,8 @@
     width: 230px;
     height: 230px;
 }
+
+#outline {
+    height: fit-content;
+    width: fit-content;
+}
